@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    gap: 15px;
+}
+
+.item{
+    border: 1px solid black;
+    width: 200px;
+    height: 500px;
+}
+
+.inner-container{
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+}
+
+h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    background-color: white;
+    padding: 10px 20px;
+    color: black;
+    border: 1px solid black;
+    width: 100%;
+}
