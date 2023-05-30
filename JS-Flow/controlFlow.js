@@ -33,29 +33,34 @@
 //     console.log('Numar mai mic ca 4 in if');
 // }
 
-// if(varstaString === '20'){
-//     switch(nume){
-//         case 'Ciprian':
-//         case 'Ion':
-//         case 'Mara': {
-//             if(nume === 'Ciprian'){
-//                 console.log('Hey, uite ca iti stiu numele');
-//             }
+if(varstaString === '20'){
+    switch(nume){
+        case 'Ciprian':
+        case 'Ion':
+        case 'Mara': {
+            if(nume === 'Ciprian'){
+                console.log('Hey, uite ca iti stiu numele');
+            }
     
-//             break;
-//         }
-//         case '20':{
-//             console.log('Esti cursant');
-//             break;
-//         }
-//         default:{
-//             const varsta = prompt('Introdu Varsta ta'); 
-//             console.log(varsta);
-//         }
-//     }
-// }
-
-
-for(let i = 0; i < 50; i = i + 1){
-    console.log('Ciprian');
+            break;
+        }
+        case '20':{
+            console.log('Esti cursant');
+            break;
+        }
+        default:{
+            const varsta = prompt('Introdu Varsta ta'); 
+            console.log(varsta);
+        }
+    }
 }
+
+const nume = 'Mara';
+
+console.log('Incepe codul nostru');
+
+if(nume === 'Ciprian' || nume === 'Ion' || nume === 'Mara'){
+    console.log('Hello ciprian');
+}
+
+console.log('Se incheie codul');
