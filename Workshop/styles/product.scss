@@ -1,0 +1,60 @@
+@import "colors";
+@import "spacings";
+@import "typography";
+@import "base";
+@import "mixins";
+
+.hero {
+    &.products-page{
+        height: 100px;
+    }
+}
+
+.product{
+    .container{
+        .details-container{
+            .title{
+                font-size: 40px;
+            }
+
+            .upper-details{
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .price-buy{
+                width: 300px;
+                border: 1px solid black;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .price{
+                    font-size: 30px;
+                    color: red;
+                }
+
+                .buy-button{
+                    margin: 0 20px;
+                    margin-bottom: 20px;
+                    border: 1px solid blue;
+                    background-color: aqua;
+                    display: flex;
+                    justify-content: center;
+                    cursor: pointer;
+
+                    .text{
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    &:hover{
+                        background-color: aquamarine;
+                    }
+                }
+            }
+
+        }
+
+    }
+}

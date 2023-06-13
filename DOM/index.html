@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script async src="events.js" type="text/Javascript"></script>
+    <script async src="practiceSignUp.js" type="text/Javascript"></script>
     <link rel="stylesheet" href="style.css">
     <style>
         /* body{
@@ -62,20 +62,39 @@
     <button class="style-button">Click me 1</button>
     <button class="style-button">Click me 2</button>
     <button class="style-button">Click me 3</button>
-    <button class="style-button">Click me 4</button> -->
+     -->
 
+    <!-- <form id="form">
         <div>
-            <label for="date">Introdu date</label>
-            <input type="text" id="date" name="date" value="Ciprian"/>
+            <label for="nume1">Introdu Nume</label>
+            <input type="text" id="nume1" name="nume" required/>
+            <span class="hide">Nu ai introdus nume</span>
         </div>
-        <button id="getData">Submit</button>
+        <div>
+            <label for="prenume2">Introdu Prenume</label>
+            <input type="text" id="prenume2" name="prenume" required/>
+            <span class="hide">Nu ai introdus prenume</span>
+        </div>
+        <div>
+            <label for="termenisiconditii">Accepta termeni si conditiile</label>
+            <input type="checkbox" id="termenisiconditii" name="termenisiconditii" required/>
+            <span class="hide">Nu ai acceptat termeni si conditiile</span>
+        </div>
+        <div>
+            <label for="password3">Introdu Parola</label>
+            <input type="password" id="password3" name="password" required/>
+            <span class="hide">Nu ai introdus parola</span>
+            <button id="show_hide">show</button>
+        </div>
+        <button type="submit" id="getData">Submit</button>
+    </form> -->
+    
 
-    <!-- <ul>
+    <!-- <ul id="listElements">
         <li>Item 1</li>
         <li>Item 2</li>
         <li>
             Item 3
-            <button id="but">Click me</button>
         </li>
         <li>Item 4</li>
         <li>Item 5</li>
@@ -85,5 +104,29 @@
     <!-- <a href="https://www.google.ro" target="_blank">Go to google</a> -->
 
     <!-- <button id="remove">Remove first button</button> -->
+
+
+    <form id="signUp">
+        <h1>SIGN UP</h1>
+        <div>
+            <label for="userName">Username</label>
+            <input type="text" id="userName" name="userName">
+            <span class="hide">Camp obligatoriu</span>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <span class="hide">Camp obligatoriu</span>
+        </div>
+        <div>
+            <label for="confirmPassword">Confirm password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <span class="hide">Camp obligatoriu</span>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <button id="add-local">Add to local</button>
+    <button id="show-local">Show local value</button>
 </body>
 </html>

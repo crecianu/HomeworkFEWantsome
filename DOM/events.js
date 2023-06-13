@@ -65,8 +65,83 @@
 //     // window.location = 'https://facebook.com';
 // })
 
-const button = document.getElementById('getData');
-button.addEventListener('click', () =>{
-    const input = document.getElementById('date');
-    console.log(input.value);
+// const button = document.getElementById('getData');
+// button.addEventListener('click', (event) =>{
+//     const inputNume = document.getElementById('nume');
+//     const inputPrenume = document.getElementById('prenume');
+//     const inputPassword = document.getElementById('password');
+//     if(inputNume.value !== '' && inputPrenume.value !== '' && inputPassword.value !==''){
+//         console.log(inputNume.value, ' ', inputPrenume.value, ' ', inputPassword.value);
+//     } else {
+//         alert('Hey, nu ai introdus toate datele');
+//     }
+// })
+
+const inputsList = ['nume', 'prenume', 'password', 'termenisiconditii'];
+
+
+const form = document.getElementById('form');
+form.addEventListener('submit', (event) =>{
+    event.preventDefault();
+    // inputurile
+    // sub forma de obiect
+    // event.target.nume 
+    // event.target.prenume
+    // event.target[inputsList[0]] <=> event.target.nume 
+    const formInputs = event.target;
+
+    // am vrut sa iau toate inputurile care sunt goale
+    const emptyInputs = inputsList.filter((key) => {
+        // resetam toate span-urile de la show la hide
+        formInputs[key].nextElementSibling.classList.replace('show', 'hide');
+        
+        if(formInputs[key].getAttribute('type') === 'checkbox'){
+            // daca checkbox-ul este check-ui valoarea lui checked o sa fie true
+            // altfel o sa fie false
+            return formInputs['termenisiconditii'].checked === false;
+        }
+        
+        return formInputs[key].value === '';
+    });
+
+    console.log(emptyInputs);
+
+    // daca lista mea are cel putin un element
+    // atunci trebuie sa ii semnalez utilizatorului ca are elemente care nu au fost completate
+    if(emptyInputs.length > 0){
+
+        for(let i = 0; i< emptyInputs.length; i++){
+            const key = emptyInputs[i];
+            // ma duc pe fratele urmator al inputului si ii setez clasa de pe hide pe show
+            //  formInputs[key] === input
+            // formInputs[key].nextElementSibling.classList.replace('hide', 'show');
+            formInputs[key].parentNode.querySelector('span.hide').classList.replace('hide', 'show');
+        }
+
+        return; //return undefined;
+    }
+
+    for(let i = 0; i< inputsList.length; i++){
+        const key = inputsList[i];
+        console.log(formInputs[key].value);
+    }
 })
+
+const showHideButton = document.getElementById('show_hide');
+showHideButton.addEventListener('click', (event) =>{
+    const inputPassword = document.getElementById('password');
+    if(inputPassword.getAttribute('type') === 'password'){
+        inputPassword.setAttribute('type', 'text');
+        event.target.textContent = 'hide';
+    } else {
+        inputPassword.setAttribute('type', 'password');
+        event.target.textContent = 'show';
+    }
+})
+
+// const listUL = document.getElementById('listElements');
+
+// listUL.addEventListener('click', (event) => {
+//     console.log(event.target.textContent);
+//     console.log(event.currentTarget);
+// });

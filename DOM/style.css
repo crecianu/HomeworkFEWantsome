@@ -54,11 +54,20 @@ ul li{
 body {
     height: 100vh;
     width: 100vw;
-    background-color: red;
+    /* background-color: red; */
 }
 
 ul{
     width: 300px;
     height: 300px;
     background-color: blue;
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
+    color: red;
 }

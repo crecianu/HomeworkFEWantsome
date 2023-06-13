@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+@import "colors";
+
+html {
+    font-size: 16px;
+}
+
+body{
+    font-family: "Alata", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    text-transform: uppercase;
+}
+
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: $veryDarkGrey;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+p,
+li,
+a,
+button {
+    font-size: 1rem;
+}
