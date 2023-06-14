@@ -1,4 +1,5 @@
 const ITEMS_PER_PAGE = 8;
+// let counter = 0;
 const productListString = localStorage.getItem('productList');
 
 if (!productListString) {
@@ -30,7 +31,7 @@ function createCardElement(id, imgUrl, imgAlt, productTitle, productPrice, curre
     const anchor = document.createElement('a');
     const container = document.createElement('div');
     card.classList.add('card');
-    anchor.setAttribute('href', `/product.html?productId=${id}`); //?
+    anchor.setAttribute('href', `/Workshop/product.html?productId=${id}`);
 
     const img = createImg(imgUrl, imgAlt);
     const title = createCustomElement('h3', productTitle);
@@ -39,12 +40,23 @@ function createCardElement(id, imgUrl, imgAlt, productTitle, productPrice, curre
     const description = createCustomElement('p', productDescription);
     const addToCart = createCustomElement('button', 'Add to Cart');
 
+    addToCart.classList.add('addToCart');
+    addToCart.addEventListener('click', (e) => {
+        // e.stopPropagation();
+        e.preventDefault();
+        const cart = document.getElementById('cart');
+        // counter = counter + 1;
+        const counterString = localStorage.getItem('counter');
+        const counterNumber = parseInt(counterString);
+        localStorage.setItem('counter', counterNumber + 1);
+        cart.textContent = counterNumber + 1;
+    })
+    
     container.appendChild(img);
     container.appendChild(title);
     container.appendChild(price);
     container.appendChild(description);
     container.appendChild(addToCart);
-
     anchor.appendChild(container);
     card.appendChild(anchor);
 
@@ -53,12 +65,20 @@ function createCardElement(id, imgUrl, imgAlt, productTitle, productPrice, curre
 
 
 function generateList(list, start, end){
-    // const productListElement = document.getElementsByClassName('product-list');
     const productListElement = document.querySelector('.product-list');
     const pagination = document.querySelector('.pagination');
 
     productListElement.innerHTML = '';
     pagination.innerHTML = '';
+
+    if(list.length <=0){
+        productListElement.innerHTML = '<p>Nu avem iteme de afisat</p>';
+    }
+
+
+    // const productListElement = document.getElementsByClassName('product-list');
+    
+   
 
     // guard
     if (!productListElement) {
@@ -92,8 +112,8 @@ function generateList(list, start, end){
 // </ol>
 
 function generatePagination(list){
-    let page = Math.floor(productList.length / ITEMS_PER_PAGE);
-    const pageRest = productList.length % ITEMS_PER_PAGE;
+    let page = Math.floor(list.length / ITEMS_PER_PAGE);
+    const pageRest = list.length % ITEMS_PER_PAGE;
     if(pageRest > 0){
         page = page + 1;
     }
@@ -136,20 +156,34 @@ function generatePagination(list){
     return ol;
 }
 
-const searchButton = document.getElementById('searchButton');
-searchButton.addEventListener('click', () =>{
+function searchByInput(){
     const input = document.getElementById('search');
+    // converteste toate caracterele mari in caractere mici
+    // ProducT => product
     const searchText = input.value.toLowerCase();
 
     // if product tile 
 
     const filterList = productList.filter((product) =>{
         const lowerLetters = product.title.toLowerCase();
+        const price = product.price + '';
 
-        return lowerLetters.includes(searchText)
+        return lowerLetters.includes(searchText) || price.includes(searchText);
     });
 
     generateList(filterList, 0, ITEMS_PER_PAGE);
+}
+
+const searchButton = document.getElementById('searchButton');
+searchButton.addEventListener('click', () =>{
+    searchByInput()
 })
 
 generateList(productList, 0, ITEMS_PER_PAGE);
+
+const input = document.getElementById('search');
+input.addEventListener('keypress', (e) =>{
+    if(e.code === 'Enter'){
+        searchByInput()
+    }
+})

@@ -11,6 +11,9 @@ function generateList() {
             alt: `Item ${i}`,
             price: 100 + i * 10,
             currency: 'lei',
+            reviews: [],
+            stars: 3,
+            countForItemsInBag: 0,
         }
         productList.push(item);
     }

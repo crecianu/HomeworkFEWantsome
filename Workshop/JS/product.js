@@ -60,11 +60,68 @@ if (!product) {
     const img = document.querySelector('.image-container img');
     const price = document.querySelector('.price');
     const description = document.querySelector('.product-informations');
-    
+    const addToCartButton = document.getElementById('addToCart');
+    const removeToCartButton = document.getElementById('removeToCart');
+    const reviewList = document.getElementById('review-list');
+
+    for(let i = 0; i< product.reviews.length; i++){
+        const li = document.createElement('li');
+        li.textContent = product.reviews[i];
+        reviewList.appendChild(li);
+    }
+
+    addToCartButton.addEventListener('click', (e) => {
+        // e.stopPropagation();
+        e.preventDefault();
+        const cart = document.getElementById('cart');
+        const counterString = localStorage.getItem('counter');
+        const counterNumber = parseInt(counterString);
+        localStorage.setItem('counter', counterNumber + 1);
+        cart.textContent = counterNumber + 1;
+    });
+    removeToCartButton.addEventListener('click', (e) => {
+        // e.stopPropagation();
+        e.preventDefault();
+        const cart = document.getElementById('cart');
+        const counterString = localStorage.getItem('counter');
+        const counterNumber = parseInt(counterString);
+
+        if(counterNumber - 1 <= 0){
+            localStorage.setItem('counter', 0);
+            cart.textContent = 0;
+        } else{
+            localStorage.setItem('counter', counterNumber - 1);
+            cart.textContent = counterNumber - 1;
+        }
+    });
+
     title.textContent = product.title;
     img.setAttribute('src', product.img);
     img.setAttribute('alt', product.alt);
     price.textContent = `${product.price} ${product.currency}`;
     description.textContent= product.shortDescription;
+
+
+    const input = document.getElementById('addReview');
+    input.addEventListener('keypress', (e) =>{
+        if(e.code === 'Enter'){
+            const li = document.createElement('li');
+            li.textContent = e.target.value;
+            reviewList.appendChild(li);
+
+            const productListString = localStorage.getItem('productList');
+            const productList = JSON.parse(productListString);
+            product.reviews.push(e.target.value);
+
+            const index = productList.findIndex((el) =>{
+                return el.id === product.id;
+            })
+            console.log(index);
+
+            productList[index] = product;
+
+            localStorage.setItem('productList', JSON.stringify(productList));
+        }
+    })
 }
 
