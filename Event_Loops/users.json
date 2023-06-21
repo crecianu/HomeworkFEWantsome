@@ -1,0 +1,17 @@
+[
+    {
+        "nume": "Popescu",
+        "prenume": "Ioana",
+        "varsta": 18
+    },
+    {
+        "nume": "Popescu",
+        "prenume": "Maria",
+        "varsta": 20
+    },
+    {
+        "nume": "Popescu",
+        "prenume": "Camelia",
+        "varsta": 40
+    }
+]
